@@ -28,13 +28,16 @@ namespace MvcWebUl.Entity
             context.SaveChanges();
 
 
-            var urunler = new List<Product>()
+            List<Product> urunler = new List<Product>()
             {
-                new Product(){ Name = "Iphone 6", Description = "iyi" , Price = 6000, Stock = 100, IsApproved = true ,Catergory = 1 },
-                new Product(){ Name = "Laptop", Description = "iyi" , Price = 8000, Stock = 200, IsApproved = true ,Catergory = 2 },
-                new Product(){ Name = "Samsung s8", Description = "iyi" , Price = 4000, Stock = 10, IsApproved = false ,Catergory = 2 },
-                new Product(){ Name = "Lenova pc", Description = "iyi" , Price = 3000, Stock = 120, IsApproved = true ,Catergory = 3 },
-                new Product(){ Name = "Kamera", Description = "iyi" , Price = 6000, Stock = 110, IsApproved = false ,Catergory = 1 },
+                new Product(){ Name = "Iphone 6", Description = "iyi" , Price = 6000, Stock = 100, IsApproved = true , CategoryId = 1, IsHome= true },
+                new Product(){ Name = "Laptop", Description = "iyi" , Price = 8000, Stock = 200, IsApproved = true , CategoryId = 2, IsHome= true },
+                new Product(){ Name = "Samsung s8", Description = "iyi" , Price = 4000, Stock = 10, IsApproved = false , CategoryId = 1, IsHome= true },
+                new Product(){ Name = "Lenova pc", Description = "iyi" , Price = 3000, Stock = 120, IsApproved = true , CategoryId = 3, IsHome= false },
+                new Product(){ Name = "asus pc", Description = "iyi" , Price = 3000, Stock = 120, IsApproved = true , CategoryId = 3, IsHome= true },
+                new Product(){ Name = "apple pc", Description = "iyi" , Price = 3000, Stock = 120, IsApproved = true , CategoryId = 3, IsHome= false },
+                new Product(){ Name = "monster pc", Description = "iyi" , Price = 3000, Stock = 120, IsApproved = true , CategoryId = 3, IsHome= true },
+                new Product(){ Name = "Kamera", Description = "iyi" , Price = 6000, Stock = 110, IsApproved = false , CategoryId = 2, IsHome= true },
 
             };
 

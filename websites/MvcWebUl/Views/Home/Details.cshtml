@@ -1,4 +1,5 @@
-﻿
+﻿@using MvcWebUl.Entity
+@model Product
 @{
     ViewBag.Title = "Details";
 }
@@ -13,7 +14,7 @@
         <!-- title -->
         <div class="row">
             <div class="col-md-12">
-                <h1>Iphone X - 64 Gb </h1>
+                <h1> @Model.Name </h1>
             </div>
         </div>
         <div class="row mt-1">
@@ -25,10 +26,7 @@
         <div class="row mt-2">
             <div class="col-md-12">
                 <div id="desciption">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error modi aperiam eligendi. Unde ea quasi neque necessitatibus, tempore eligendi voluptatibus, earum dolore asperiores, quibusdam animi temporibus accusamus laboriosam nemo cumque? Laboriosam
-                    accusamus excepturi aperiam sapiente modi numquam dolorum, iusto nesciunt perferendis eum qui porro iure et sequi repellat nostrum doloremque nam vitae? Possimus labore cum veniam voluptatem necessitatibus, alias iure? Consequatur
-                    recusandae blanditiis dolores. Consequatur, doloribus sequi voluptatum cumque autem ipsum quos. Eius dolor repellendus sit doloremque doloribus quae sapiente minima iusto. Molestiae enim voluptatem doloribus error ipsa iure
-                    omnis! At mollitia, cumque ab corrupti commodi unde ratione porro quisquam accusantium officia laudantium placeat reprehenderit necessitatibus nulla beatae quidem? A numquam nam libero doloremque cum ducimus iste placeat modi
+                   @Model.Description
                 </div>
             </div>
         </div>
@@ -45,7 +43,7 @@
         </div>
         <div class="row mt-2">
             <div class="col-md-12">
-                <h4 id="product-price">$120</h4>
+                <h4 id="product-price">$@Model.Price</h4>
             </div>
         </div>
         <div class="row mt-2">

@@ -14,9 +14,6 @@ namespace MvcWebUl.Entity
 
         public List<Product> Products { get; set; }
 
-        public static implicit operator Category(int v)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
