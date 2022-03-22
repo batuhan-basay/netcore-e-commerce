@@ -38,9 +38,9 @@ namespace MvcWebUl.Controllers
             return View(_context.Products.Where(i => i.Id == id).FirstOrDefault());
         }
 
-        public ActionResult List()
+        public ActionResult List(int? id)
         {
-            return View(_context.Products
+            var urunler = _context.Products
                 .Where(i => i.IsApproved == true)
                 .Select(i => new ProductModel()
                 {
@@ -54,13 +54,19 @@ namespace MvcWebUl.Controllers
                     CategoryId = i.CategoryId
 
 
-                }).ToList());
-        }
+                }).AsQueryable();
 
+            if (id != null)
+            {
+                urunler = urunler.Where(i => i. CategoryId == id);
+            }
+
+            return View(urunler.ToList());
+        }
 
         public PartialViewResult GetCategories()
         {
-            return PartialView(_context.Categories.ToString());
+            return PartialView(_context.Categories.ToList());
         }
     }
 }

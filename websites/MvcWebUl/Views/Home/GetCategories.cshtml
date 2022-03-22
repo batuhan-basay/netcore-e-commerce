@@ -1,12 +1,41 @@
 ﻿@model IEnumerable<MvcWebUl.Entity.Category>
 
+@{ 
+    var selectedCategory = Url.RequestContext.RouteData.Values["id"];
+}
 
 <ul class="list-group">
+    @if (selectedCategory != null)
+    {
+        <a href="/Home/List" class="list-group-item ">>> Tüm Kategoriler</a>
+    }
+    else
+    {
+        <a href="/Home/List" class="list-group-item active">>> Tüm Kategoriler</a>
+    }
+
+
     @foreach (var item in Model)
     {
-        <li class="list-group-item">
-            <a href="/Home/List/@item.Id">@item.Name</a>
-        </li>
+        if (selectedCategory != null)
+        {
+            if (item.Id == int.Parse(selectedCategory.ToString()))
+            {
+                // seçilen kategori ile route idsi birbirine eşit
+                <a href="/Home/List/@item.Id" class="list-group-item active">>> @item.Name</a>
+
+            }
+            else
+            {
+                <a href="/Home/List/@item.Id" class="list-group-item">>> @item.Name</a>
+
+            }
+        }
+        else
+        {
+            <a href="/Home/List/@item.Id" class="list-group-item">>> @item.Name</a>
+
+        }
     }
 </ul>
 
