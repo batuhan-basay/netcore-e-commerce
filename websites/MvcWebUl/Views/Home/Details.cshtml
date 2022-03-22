@@ -3,91 +3,101 @@
 @{
     ViewBag.Title = "Details";
 }
+<div class="container mt-5">
+    <div class="row">
+        <!-- left -->
+        <div class="col-md-6">
+            <img src="~/Upload/@Model.Image" class="img-fluid w-75">
+        </div>
+        <!-- right -->
+        <div class="col-md-6">
+            <!-- title -->
+            <div class="row">
+                <div class="col-md-12">
+                    <h1> @Model.Name </h1>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-md-12">
+                    @if (Model.IsApproved)
+                    {
+                        <span class="badge bg-primary">In Stock</span>
+                    }
+                    else
+                    { <span class="badge bg-danger">Not In Stock</span>
 
-<div class="row">
-    <!-- left -->
-    <div class="col-md-6">
-        <img src="~/eticaret_bootstrap/assets/img/iphone.jpg" class="img-fluid w-75">
-    </div>
-    <!-- right -->
-    <div class="col-md-6">
-        <!-- title -->
-        <div class="row">
-            <div class="col-md-12">
-                <h1> @Model.Name </h1>
+                    }
+
+
+                    <span class="product-number">#52131231</span>
+                </div>
             </div>
-        </div>
-        <div class="row mt-1">
-            <div class="col-md-12">
-                <span class="badge bg-primary">In Stock</span>
-                <span class="product-number">#52131231</span>
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    <div id="desciption">
+                        @Model.Description
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="row mt-2">
-            <div class="col-md-12">
-                <div id="desciption">
-                   @Model.Description
+            <div class="row mt-2">
+                <div class="col-md-4">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                    <span class="badge bg-success">53</span>
+                </div>
+                <div id="write-review" class="col-md-4"><a href="">Write a review</a></div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    <h4 id="product-price">$@Model.Price</h4>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    <button class="btn btn-success">
+                        <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                        Add to Cart
+                    </button>
                 </div>
             </div>
         </div>
-        <div class="row mt-2">
-            <div class="col-md-4">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                <span class="badge bg-success">53</span>
-            </div>
-            <div id="write-review" class="col-md-4"><a href="">Write a review</a></div>
-        </div>
-        <div class="row mt-2">
-            <div class="col-md-12">
-                <h4 id="product-price">$@Model.Price</h4>
-            </div>
-        </div>
-        <div class="row mt-2">
-            <div class="col-md-12">
-                <button class="btn btn-success">
-                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                    Add to Cart
-                </button>
-            </div>
-        </div>
     </div>
-</div>
-<!-- bottom -->
-<div class="row">
-    <div class="bd-example">
-        <ul class="nav nav-tabs mb-3" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="pills-desciption-tab" data-bs-toggle="pill" data-bs-target="#pills-desciption" type="button" role="tab" aria-controls="pills-desciption" aria-selected="true">Desciption</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-payment-tab" data-bs-toggle="pill" data-bs-target="#pills-payment" type="button" role="tab" aria-controls="pills-payment" aria-selected="false">Payment Methods</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-comment-tab" data-bs-toggle="pill" data-bs-target="#pills-comment" type="button" role="tab" aria-controls="pills-comment" aria-selected="false">Comment</button>
-            </li>
-        </ul>
-        <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade active show" id="pills-desciption" role="tabpanel" aria-labelledby="pills-desciption-tab">
-                <p>
-                    <strong>This is some placeholder content the Home tab's associated content.</strong> Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and
-                    styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.
-                </p>
-            </div>
-            <div class="tab-pane fade" id="pills-payment" role="tabpanel" aria-labelledby="pills-payment-tab">
-                <p>
-                    <strong>This is some placeholder content the Profile tab's associated content.</strong> Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility
-                    and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.
-                </p>
-            </div>
-            <div class="tab-pane fade" id="pills-comment" role="tabpanel" aria-labelledby="pills-comment-tab">
-                <p>
-                    <strong>This is some placeholder content the Contact tab's associated content.</strong> Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility
-                    and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.
-                </p>
+    <!-- bottom -->
+    <div class="row">
+        <div class="bd-example">
+            <ul class="nav nav-tabs mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-desciption-tab" data-bs-toggle="pill" data-bs-target="#pills-desciption" type="button" role="tab" aria-controls="pills-desciption" aria-selected="true">Desciption</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-payment-tab" data-bs-toggle="pill" data-bs-target="#pills-payment" type="button" role="tab" aria-controls="pills-payment" aria-selected="false">Payment Methods</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-comment-tab" data-bs-toggle="pill" data-bs-target="#pills-comment" type="button" role="tab" aria-controls="pills-comment" aria-selected="false">Comment</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade active show" id="pills-desciption" role="tabpanel" aria-labelledby="pills-desciption-tab">
+                    <p>
+                        <strong>This is some placeholder content the Home tab's associated content.</strong> Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and
+                        styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.
+                    </p>
+                </div>
+                <div class="tab-pane fade" id="pills-payment" role="tabpanel" aria-labelledby="pills-payment-tab">
+                    <p>
+                        <strong>This is some placeholder content the Profile tab's associated content.</strong> Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility
+                        and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.
+                    </p>
+                </div>
+                <div class="tab-pane fade" id="pills-comment" role="tabpanel" aria-labelledby="pills-comment-tab">
+                    <p>
+                        <strong>This is some placeholder content the Contact tab's associated content.</strong> Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility
+                        and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.
+                    </p>
+                </div>
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
-﻿@using MvcWebUl.Entity
-@model IEnumerable<Product>
+﻿@using MvcWebUl.Models
+@model IEnumerable<ProductModel>
 
 <div class="container">
     <div class="card-deck row">
@@ -7,14 +7,15 @@
         @foreach (var urun in Model)
         {
 
-            <div class="card col-md-4">
+            <div class="card col-md-4 mb-2">
                 <img class="card-img-top" alt="@urun.Name" src="/Upload/@urun.Image">
                 <div class="card-body">
                     <h5 class="card-title"><a href="/Home/Details/@urun.Id">@urun.Name</a> </h5>
-                    <p class="card-text">@urun.Description</p>
+                    <p class="card-text description">@urun.Description</p>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">@urun.Price</small>
+                    <small class="text-muted product-price">$@urun.Price</small>
+                    <a href="/Home/Details/@urun.Id" class="btn btn-outline-primary btn-sm">>>Ürünü incele</a>
                 </div>
             </div>
         }
