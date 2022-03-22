@@ -56,5 +56,11 @@ namespace MvcWebUl.Controllers
 
                 }).ToList());
         }
+
+
+        public PartialViewResult GetCategories()
+        {
+            return PartialView(_context.Categories.ToString());
+        }
     }
 }
