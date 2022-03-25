@@ -6,9 +6,9 @@ using System.Web;
 
 namespace MvcWebUl.Identity
 {
-    public class ApplicationRole: IdentityUser
+    public class ApplicationRole: IdentityRole
     {
-        public string Name { get; set; }
+
         public string Description{ get; set; }
         public ApplicationRole()
         {

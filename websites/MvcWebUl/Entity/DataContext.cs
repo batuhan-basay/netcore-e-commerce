@@ -14,7 +14,6 @@ namespace MvcWebUl.Entity
 
         public DataContext():base("dataConnection")
         {
-            Database.SetInitializer(new DataInitializer());
         }
 
         public DbSet<Product> Products{ get; set; }
