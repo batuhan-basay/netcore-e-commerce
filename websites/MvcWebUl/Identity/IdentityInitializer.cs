@@ -35,7 +35,7 @@ namespace MvcWebUl.Identity
                 manager.Create(role);
             }
 
-            if (!context.Users.Any(i => i.UserName == "batuhanbasay"))
+            if (!context.Users.Any(i => i.Name == "Batuhan"))
             {
                 var store = new UserStore<ApplicationUser>(context);
                 var manager = new UserManager<ApplicationUser>(store);
@@ -48,12 +48,12 @@ namespace MvcWebUl.Identity
                 manager.AddToRole(user.Id, "user");
             }
 
-            if (!context.Users.Any(i => i.UserName == "ruveydaakcinar"))
+            if (!context.Users.Any(i => i.Name == "Ruveyda"))
             {
                 var store = new UserStore<ApplicationUser>(context);
                 var manager = new UserManager<ApplicationUser>(store);
 
-                var user = new ApplicationUser() { Name = "Ruveyda Hilal", Surname = "Akçınar", UserName = "ruveydaakcinar", Email = "ruveydaakcinar@gmail.com" };
+                var user = new ApplicationUser() { Name = "Ruveyda", Surname = "Akçınar", UserName = "ruveydaakcinar", Email = "ruveydaakcinar@gmail.com" };
 
 
                 manager.Create(user, "1234");

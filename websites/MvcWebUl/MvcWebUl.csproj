@@ -190,15 +190,12 @@
     <Compile Include="Entity\Category.cs" />
     <Compile Include="Entity\DataContext.cs" />
     <Compile Include="Entity\DataInitializer.cs" />
-    <Compile Include="Entity\IdentityDataContext.cs" />
-    <Compile Include="Entity\IdentityDataContext1.cs" />
     <Compile Include="Entity\Product.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Identity\ApplicationRole.cs" />
     <Compile Include="Identity\ApplicationUser.cs" />
-    <Compile Include="Identity\CreateDatabaseIfModelChanges.cs" />
     <Compile Include="Identity\IdentityDataContext.cs" />
     <Compile Include="Identity\IdentityInitializer.cs" />
     <Compile Include="Models\Login.cs" />
