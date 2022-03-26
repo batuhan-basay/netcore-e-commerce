@@ -10,30 +10,29 @@ namespace MvcWebUl.Models
     public class Register
     {
         [Required]
-        [DisplayName("Your Name")]
+        [DisplayName("Adınız")]
         public string Name { get; set; }
 
         [Required]
-        [DisplayName("Your Surname")]
+        [DisplayName("Soyadınız")]
         public string SurName { get; set; }
 
         [Required]
-        [DisplayName("Your Username")]
+        [DisplayName("Kullanıcı Adı")]
         public string UserName { get; set; }
 
         [Required]
-        [DisplayName("Your Email")]
-        [EmailAddress(ErrorMessage = "Your e-mail is not correct")]
+        [DisplayName("Eposta")]
+        [EmailAddress(ErrorMessage = "Eposta adresinizi düzgün giriniz.")]
         public string Email { get; set; }
 
         [Required]
-        [DisplayName("Your Password")]
+        [DisplayName("Şifre")]
         public string Password { get; set; }
 
         [Required]
-        [DisplayName("Your RePassword")]
-        [Compare("Password", ErrorMessage = "Your passwords do not match")]
+        [DisplayName("Şifre Tekrar")]
+        [Compare("Password", ErrorMessage = "Şifreleriniz uyuşmuyor.")]
         public string RePassword { get; set; }
-
     }
 }

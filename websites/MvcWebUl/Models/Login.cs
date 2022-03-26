@@ -11,20 +11,14 @@ namespace MvcWebUl.Models
     {
 
         [Required]
-        [DisplayName("Your Username")]
+        [DisplayName("Kullanıcı Adı")]
         public string UserName { get; set; }
 
         [Required]
-        [DisplayName("Your Email")]
-        [EmailAddress(ErrorMessage = "Your e-mail is not correct")]
-        public string Email { get; set; }
-
-        [Required]
-        [DisplayName("Your Password")]
+        [DisplayName("Şifre")]
         public string Password { get; set; }
 
-        [Required]
-        [DisplayName("Remember Me")]
+        [DisplayName("Beni Hatırla")]
         public bool RememberMe { get; set; }
     }
 }

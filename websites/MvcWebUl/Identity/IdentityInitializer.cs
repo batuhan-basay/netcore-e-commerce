@@ -9,19 +9,16 @@ using System.Web;
 
 namespace MvcWebUl.Identity
 {
-    public class IdentityInitializer: CreateDatabaseIfNotExists<IdentityDataContext>
+    public class IdentityInitializer : CreateDatabaseIfNotExists<IdentityDataContext>
     {
         protected override void Seed(IdentityDataContext context)
         {
-            // rolleri
-
-            if (!context.Roles.Any(i=> i.Name == "admin"))
+            // Rolleri
+            if (!context.Roles.Any(i => i.Name == "admin"))
             {
                 var store = new RoleStore<ApplicationRole>(context);
-                var manager =new RoleManager<ApplicationRole>(store);
-
-                var role = new ApplicationRole() { Name = "admin", Description="admin rolu" };
-
+                var manager = new RoleManager<ApplicationRole>(store);
+                var role = new ApplicationRole() { Name = "admin", Description = "admin rolü" };
                 manager.Create(role);
             }
 
@@ -29,37 +26,43 @@ namespace MvcWebUl.Identity
             {
                 var store = new RoleStore<ApplicationRole>(context);
                 var manager = new RoleManager<ApplicationRole>(store);
-
-                var role = new ApplicationRole() { Name = "user", Description = "user rolu" };
-
+                var role = new ApplicationRole() { Name = "user", Description = "user rolü" }; ;
                 manager.Create(role);
             }
 
-            if (!context.Users.Any(i => i.Name == "Batuhan"))
+            if (!context.Users.Any(i => i.Name == "sadikturan"))
             {
                 var store = new UserStore<ApplicationUser>(context);
                 var manager = new UserManager<ApplicationUser>(store);
+                var user = new ApplicationUser() { Name = "sadık", Surname = "turan", UserName = "sadikturan", Email = "sadikturan@gmail.com" };
 
-                var user = new ApplicationUser() { Name = "Batuhan", Surname = "Basay", UserName="batuhanbasay", Email="basaybatuhan@gmail.com"};
-
-
-                manager.Create(user,"1234");
+                manager.Create(user, "1234567");
                 manager.AddToRole(user.Id, "admin");
                 manager.AddToRole(user.Id, "user");
             }
 
-            if (!context.Users.Any(i => i.Name == "Ruveyda"))
+            if (!context.Users.Any(i => i.Name == "cinarturan"))
             {
                 var store = new UserStore<ApplicationUser>(context);
                 var manager = new UserManager<ApplicationUser>(store);
+                var user = new ApplicationUser() { Name = "Çınar", Surname = "turan", UserName = "cinarturan", Email = "cinarturan@gmail.com" };
 
-                var user = new ApplicationUser() { Name = "Ruveyda", Surname = "Akçınar", UserName = "ruveydaakcinar", Email = "ruveydaakcinar@gmail.com" };
-
-
-                manager.Create(user, "1234");
+                manager.Create(user, "1234567");
                 manager.AddToRole(user.Id, "user");
             }
-            // user
+
+            if (!context.Users.Any(i => i.Name == "asdasd"))
+            {
+                var store = new UserStore<ApplicationUser>(context);
+                var manager = new UserManager<ApplicationUser>(store);
+                var user = new ApplicationUser() { Name = "Batuhan", Surname = "basay", UserName = "asdasd", Email = "asdasd@gmail.com" };
+
+                manager.Create(user, "1234567");
+                manager.AddToRole(user.Id, "user");
+            }
+
+
+
             base.Seed(context);
         }
     }

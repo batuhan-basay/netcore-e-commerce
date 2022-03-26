@@ -14,17 +14,18 @@ namespace MvcWebUl.Controllers
     public class AccountController : Controller
     {
         private UserManager<ApplicationUser> UserManager;
-        private RoleManager<ApplicationRole> roleManager;
+        private RoleManager<ApplicationRole> RoleManager;
 
         public AccountController()
         {
-            UserStore<ApplicationUser> userStore = new UserStore<ApplicationUser>(new IdentityDataContext());
+            var userStore = new UserStore<ApplicationUser>(new IdentityDataContext());
             UserManager = new UserManager<ApplicationUser>(userStore);
 
             var roleStore = new RoleStore<ApplicationRole>(new IdentityDataContext());
-            roleManager = new RoleManager<ApplicationRole>(roleStore);
+            RoleManager = new RoleManager<ApplicationRole>(roleStore);
 
         }
+
         // GET: Account
         public ActionResult Register()
         {
@@ -37,35 +38,38 @@ namespace MvcWebUl.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Kayıt islemleri
-                ApplicationUser user = new ApplicationUser();
+                //Kayıt işlemleri
+
+                var user = new ApplicationUser();
                 user.Name = model.Name;
                 user.Surname = model.SurName;
                 user.Email = model.Email;
                 user.UserName = model.UserName;
 
-
-                IdentityResult result=  UserManager.Create(user,model.Password);
+                var result = UserManager.Create(user, model.Password);
 
                 if (result.Succeeded)
                 {
-                    // kullanıcı oluştu ve role atayabilirsiniz
-                    if (roleManager.RoleExists("user"))
+                    //kullanıcı oluştu ve kullanıcıyı bir role atayabilirsiniz.
+                    if (RoleManager.RoleExists("user"))
                     {
                         UserManager.AddToRole(user.Id, "user");
                     }
-                    return RedirectToAction("Login","Account");
+                    return RedirectToAction("Login", "Account");
                 }
                 else
                 {
-                    ModelState.AddModelError("RegisterUserError", "User creation error");
+                    ModelState.AddModelError("RegisterUserError", "Kullanıcı  oluşturma hatası.");
                 }
+
             }
-            return View();
+
+            return View(model);
         }
 
 
-        //login
+
+        // GET: Account
         public ActionResult Login()
         {
             return View();
@@ -73,41 +77,46 @@ namespace MvcWebUl.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(Login model)
+        public ActionResult Login(Login model, string ReturnUrl)
         {
             if (ModelState.IsValid)
             {
+                //Login işlemleri
                 var user = UserManager.Find(model.UserName, model.Password);
 
                 if (user != null)
                 {
-                    //ApplicationCookie oluşturup sisteme bırak.
+                    // varolan kullanıcıyı sisteme dahil et.
+                    // ApplicationCookie oluşturup sisteme bırak.
 
                     var authManager = HttpContext.GetOwinContext().Authentication;
-
-                    var identityclaims = UserManager.CreateIdentity(user,"ApplicationCookie");
+                    var identityclaims = UserManager.CreateIdentity(user, "ApplicationCookie");
                     var authProperties = new AuthenticationProperties();
                     authProperties.IsPersistent = model.RememberMe;
+                    authManager.SignIn(authProperties, identityclaims);
 
-                    authManager.SignIn(authProperties,identityclaims);
+                    if (!String.IsNullOrEmpty(ReturnUrl))
+                    {
+                        return Redirect(ReturnUrl);
+                    }
 
-                    return RedirectToAction("Index","Home");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ModelState.AddModelError("LoginUserError", "There is no such user");
+                    ModelState.AddModelError("LoginUserError", "Böyle bir kullanıcı yok.");
                 }
             }
-            return View();
+
+            return View(model);
         }
 
-        //Logout
         public ActionResult Logout()
         {
             var authManager = HttpContext.GetOwinContext().Authentication;
             authManager.SignOut();
 
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
 
     }

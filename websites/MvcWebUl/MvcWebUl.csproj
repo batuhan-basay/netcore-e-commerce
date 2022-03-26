@@ -202,7 +202,6 @@
     <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\Register.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RoleManager\Rol.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
