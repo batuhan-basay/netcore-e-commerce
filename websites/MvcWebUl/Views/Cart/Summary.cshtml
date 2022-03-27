@@ -1,0 +1,23 @@
+﻿@model MvcWebUl.Models.Cart
+<style>
+    #cart{
+        color:white;
+    }
+    #cart a{
+        color: white;
+        text-decoration: none;
+    }
+</style>
+<ul class="navbar-nav my-2 my-lg-0 mb-2 mb-lg-0">
+
+    @if (@Model.CartLines.Count > 0)
+    {
+        <li id="cart" class="nav-item">
+            <a href="/Cart">
+                Sepetteki Ürün Sayısı: (@Model.CartLines.Count)
+            </a>
+        </li>
+    }
+
+
+</ul>

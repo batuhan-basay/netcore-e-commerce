@@ -10,6 +10,7 @@ using MvcWebUl.Entity;
 
 namespace MvcWebUl.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class ProductController : Controller
     {
         private DataContext db = new DataContext();
