@@ -3,7 +3,7 @@
     @if (Request.IsAuthenticated)
     {
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">@User.Identity.Name</a>
+            <a class="nav-link active" aria-current="page" href="/Account">@User.Identity.Name</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" aria-current="page" href="/Account/Logout"> Logout</a>
